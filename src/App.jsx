@@ -92,9 +92,12 @@ function App() {
     <div className="min-h-screen bg-gray-100 text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* ✅ Navbar */}
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">📊 วางแผนปลดหนี้อัจฉริยะ</h1>
-          <div className="text-sm text-gray-600 flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-2">
+          <h1 className="text-2xl sm:text-3xl font-bold">
+            📊 วางแผนปลดหนี้อัจฉริยะ
+          </h1>
+
+          <div className="text-sm text-gray-600 flex items-start sm:items-center gap-2 sm:gap-4">
             👤 {user.email}
             <button
               onClick={handleLogout}
@@ -114,6 +117,14 @@ function App() {
           debts={debts}
         />
 
+        <div className="mt-4 text-right">
+          <button
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-xl shadow"
+            onClick={() => setModalOpen(true)}
+          >
+            ➕ เพิ่มหนี้ใหม่
+          </button>
+        </div>
         <div className="mt-6">
           <SummaryCards
             debts={debts}
@@ -132,14 +143,6 @@ function App() {
             }}
             onDeleteConfirm={(id) => setModalDeleteId(id)}
           />
-          <div className="mt-4 text-right">
-            <button
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-xl shadow"
-              onClick={() => setModalOpen(true)}
-            >
-              ➕ เพิ่มหนี้ใหม่
-            </button>
-          </div>
         </div>
 
         <div className="mt-10">
