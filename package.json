@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "watch": "bun --watch backend/index.js",
-    "start": "bun run backend/index.js"
+    "start": "bun run backend/index.js",
+    "fullstack" : "vite build && bun run backend/index.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
