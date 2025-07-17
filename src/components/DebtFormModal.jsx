@@ -70,17 +70,29 @@ export default function DebtFormModal({ closeModal, saveDebt, editDebt }) {
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           {[
-            { label: "ชื่อหนี้", name: "name", type: "text" },
-            { label: "ยอดหนี้ (บาท)", name: "amount", type: "text" }, // 👈 แก้จาก number เป็น text
+            {
+              label: "ชื่อหนี้",
+              name: "name",
+              type: "text",
+              inputMode: "text",
+            },
+            {
+              label: "ยอดหนี้ (บาท)",
+              name: "amount",
+              type: "text",
+              inputMode: "decimal",
+            }, // 👈 แก้จาก number เป็น text
             {
               label: "อัตราดอกเบี้ยต่อปี (%)",
               name: "interestRate",
               type: "text",
+              inputMode: "decimal",
             },
             {
               label: "ยอดชำระขั้นต่ำต่อเดือน",
               name: "minPayment",
               type: "text",
+              inputMode: "decimal",
             },
           ].map((field) => (
             <div key={field.name}>
@@ -93,7 +105,7 @@ export default function DebtFormModal({ closeModal, saveDebt, editDebt }) {
                 required
                 value={form[field.name]}
                 onChange={handleChange}
-                inputMode="decimal" // 👈 บอก browser ว่ารับเลข
+                inputMode={field.inputMode} // 👈 บอก browser ว่ารับเลข
                 className="w-full rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm px-3 py-2"
                 placeholder={field.label}
               />
