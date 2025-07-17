@@ -4,18 +4,30 @@ import userDataHandler from './api/user-data.js'
 
 console.log('🚀 Starting server...')
 
+function withCORS(response) {
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  return response;
+}
+
 serve({
-  fetch(req) {
+  async fetch(req) {
     const url = new URL(req.url)
     console.log(`[${req.method}] ${url.pathname}`)
 
+    if (req.method === "OPTIONS") {
+      return withCORS(new Response(null, { status: 204 }));
+    }
+
     if (url.pathname.startsWith('/api/auth')) {
-      console.log('➡️ Routing to authHandler')
-      return authHandler(req)
+      const res = await authHandler(req);
+      return withCORS(res);
     }
 
     if (url.pathname.startsWith('/api/user-data')) {
-      return userDataHandler(req)
+      const res = await userDataHandler(req);
+      return withCORS(res);
     }
 
     console.warn('❌ Route not found:', url.pathname)

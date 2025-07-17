@@ -56,7 +56,7 @@ export default function PlanSwitcher({
     if (!user) return;
 
     try {
-      await fetch("/api/user-data", {
+      await fetch("https://debt-planner.onrender.com/api/user-data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

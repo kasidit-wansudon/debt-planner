@@ -10,7 +10,7 @@ export default function Login({onLogin}) {
     e.preventDefault()
     setMessage(null)
 
-    const endpoint = isRegister ? '/api/auth/register' : '/api/auth/login'
+    const endpoint = 'https://debt-planner.onrender.com/api'+(isRegister ? '/auth/register' : '/auth/login')
 
     try {
       const res = await fetch(endpoint, {

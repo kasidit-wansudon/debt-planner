@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if (!user) return;
-    fetch(`/api/user-data?user_id=${user.id}`)
+    fetch(`https://debt-planner.onrender.com/api/user-data?user_id=${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.debts) setDebts(data.debts);
@@ -39,7 +39,7 @@ function App() {
   // 🟢 Save to backend
   const syncData = (updatedDebts, budget = monthlyBudget) => {
     if (!user) return;
-    fetch("/api/user-data", {
+    fetch("https://debt-planner.onrender.com/api/user-data", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
