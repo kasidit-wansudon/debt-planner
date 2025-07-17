@@ -1,25 +1,18 @@
-import React from "react"
-import { useDrop } from "react-dnd"
-import DebtItem from "./DebtItem"
-
-const DebtList = ({ debts, moveDebt, onEdit, onDelete }) => {
-  const [, drop] = useDrop({ accept: "DEBT_CARD" })
-
+// DebtList.jsx
+import React from 'react'
+import DebtItem from './DebtItem'
+export default function DebtList({ debts, onEdit, onDeleteConfirm }) {
   return (
-    <div ref={drop} className="grid gap-4">
+    <div className="space-y-4">
       {debts.map((debt, index) => (
         <DebtItem
           key={debt.id}
-          index={index}
-          id={debt.id}
           debt={debt}
-          moveDebt={moveDebt}
-          onEdit={onEdit}
-          onDelete={onDelete}
+          index={index}
+          onEdit={() => onEdit(debt)}
+          onDelete={() => onDeleteConfirm(debt.id)}
         />
       ))}
     </div>
   )
 }
-
-export default DebtList

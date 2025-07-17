@@ -34,7 +34,10 @@ const DebtItem = ({ debt, index, moveDebt, onEdit, onDelete }) => {
       <div className="flex justify-between items-center mb-2">
         <h3 className="text-lg font-semibold">{debt.name}</h3>
         <div className="flex gap-2">
-          <button onClick={() => onEdit(debt)}>
+          <button onClick={() => {
+            console.log(`Editing debt: ${debt.name}`);
+            
+            onEdit(debt)}}>
             <Edit2 size={18} />
           </button>
           <button onClick={() => onDelete(debt.id)}>

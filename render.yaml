@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: my-bun-app
+    env: node
+    buildCommand: "bun install"
+    startCommand: "bun index.js"
+    plan: free

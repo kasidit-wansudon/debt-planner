@@ -5,7 +5,7 @@ export function calculatePlanSummary(debts, planType, monthlyBudget) {
   const totalDebt = debts.reduce((sum, d) => sum + d.amount, 0)
   const totalMinPayment = debts.reduce((sum, d) => sum + d.minPayment, 0)
 
-  const { schedule, totalInterest, monthsToPayOff } = simulateSchedule(debts, planType, monthlyBudget)
+  const { totalInterest, monthsToPayOff } = simulateSchedule(debts, planType, monthlyBudget)
 
   const { totalInterest: minInterest, monthsToPayOff: minMonths } =
     simulateSchedule(debts, 'minimum', monthlyBudget)
